@@ -1,126 +1,89 @@
 ---
-title: "Event 1"
-date: 2024-01-01
-weight: 1
+title: "Event 2"
+date: 2026-01-27
+weight: 2
 chapter: false
-pre: " <b> 4.1. </b> "
+pre: " <b> 4.2. </b> "
 ---
 
 {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
 {{% /notice %}}
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: “AWS RE:INVENT 2025 RECAP (VIETNAM)”
+
+### Event Details
+- **Date & Time:** January 27, 2026
+- **Location:** AWS Vietnam Office (Floor 26 & 36), Ho Chi Minh City
+- **Role:** Attendee (FCJ Cloud Intern)
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Update on the most critical announcements from AWS re:Invent 2025 (Las Vegas).
+- Deep dive into Generative AI, specifically Agentic AI and Amazon Bedrock.
+- Explore new data storage and infrastructure optimizations (SageMaker, S3).
+- Network with AWS Solution Architects and the local tech community.
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Mr. Thi** – Solution Architect (Topic: Generative AI & Agents)
+- **Mr. Tung** – Speaker (Topic: OpenSearch & Agentic Search)
+- **Various AWS Solution Architects & Account Managers**
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Session 1: Generative AI & Agents
+- **Amazon Nova Models**: Introduction to the new high-performance foundation models.
+- **Bedrock Agents**: Deep dive into Orchestration, Flows, and the new **Memory** and **Guardrails** capabilities.
+- **Agentic AI**: Moving from simple chatbots to autonomous agents that can execute multi-step workflows.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### Session 2: SageMaker Unified Studio & S3 Updates
+- **Unified Studio**: A single IDE bringing Data Engineers, Data Scientists, and AI Engineers together.
+- **S3 Tables**: Native support for the Apache Iceberg table format within S3.
+- **S3 Vector**: A new feature enabling native vector storage in S3, offering significant cost reduction.
 
-#### Transitioning to modern application architecture – Microservices
+#### Session 3 & 4: Search & Multimodal AI
+- **OpenSearch Serverless**: Integration with MCP (Model Context Protocol) and Agentic Memory.
+- **Nova Multimodal Embeddings**: Converting video and images into vectors for search.
+- **Bedrock Data Automation**: Automated extraction of insights from multimedia content.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### Session 5: AI Infrastructure
+- **SageMaker HyperPod**: Advanced management for large-scale GPU clusters.
+- **SageMaker MLflow**: Full lifecycle management for Machine Learning projects.
 
 ### Key Takeaways
 
-#### Design Mindset
+#### The Future is Agentic
+- **Autonomous Workflows**: The shift from "Prompt Engineering" to "Agent Engineering." Agents with memory can maintain context and perform complex tasks without constant intervention.
+- **Guardrails are essential**: As agents become autonomous, strict policy and security guardrails are required.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+#### Data & Compute Optimization
+- **Cost Efficiency**: S3 Vector is a game-changer for projects requiring vector search (like RAG) but operating on a budget.
+- **Collaboration**: SageMaker Unified Studio streamlines the workflow between data preparation and model training.
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- **Project Integration (Security Platform)**:
+    - Evaluate **Bedrock Agents** to automate the "vulnerability scanning" workflow (e.g., an agent that runs a scan, analyzes the log, and drafts a report).
+    - Implement **S3 Vector** to store logs and vulnerability signatures efficiently for the project's backend.
+- **Architecture Refinement**: Consider adopting **Cognito** for user management based on discussions with SAs.
+- **Best Practices**: Apply the "Serverless first" mindset learned from the networking sessions.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending the **“AWS re:Invent 2025 Recap”** at the AWS Vietnam Office was a pivotal moment in my internship. Key experiences included:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Gaining Vision
+- The sessions clarified that **Agentic AI** is the immediate future. Seeing the demo of a Flow Agent inspired ideas for our own project's reporting features.
+- Understanding **Multimodal RAG** opened my eyes to possibilities beyond just text processing—essential for future phases of our Security Platform where screenshot analysis might be needed.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Technical Validation
+- The introduction of **S3 Vector** validated our team's need for a cost-effective storage solution for log analysis.
+- Networking with **Mr. Thi** and other SAs helped clarify doubts about **IAM Policies** and **Serverless** best practices that I struggled with in Week 3.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Community & Networking
+- The atmosphere at the AWS Office was energetic, with builders and developers sharing real-world challenges.
+- I had the opportunity to discuss **“TheBois” team project** with industry experts and received valuable feedback on our proposed architecture.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, this event not only updated my technical knowledge but also provided concrete tools (Agents, S3 Vector) that I can immediately apply to the **Website Security Baseline Assessment Platform**.
