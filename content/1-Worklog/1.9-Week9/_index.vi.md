@@ -1,59 +1,42 @@
 ---
-title: "Worklog Tuần 9"
-date: 2024-01-01
+title: "Week 9 Worklog"
+date: 2026-03-02
 weight: 1
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu về networking nâng cao trong AWS.
+* Tìm hiểu VPC Peering và Transit Gateway.
+* Khám phá AWS Direct Connect.
+* Cấu hình CloudFront CDN.
+* Thiết kế kiến trúc ứng dụng toàn cầu.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Nhiệm vụ trong tuần:
 
-### Kết quả đạt được tuần 9:
+| Ngày | Công việc | Ngày bắt đầu | Ngày kết thúc | Tài liệu |
+| --- | --------- | ------------ | ------------- | -------- |
+| Thứ 2 | - Giới thiệu Advanced Networking <br> - VPC Peering | 02/03/2026 | 02/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 3 | - Tổng quan Transit Gateway <br> - Kết nối nhiều VPC | 03/03/2026 | 03/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 4 | - AWS Direct Connect <br> - Kết nối hybrid | 04/03/2026 | 04/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 5 | - CloudFront overview <br> - Cấu hình CDN | 05/03/2026 | 05/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 6 | - Tối ưu phân phối toàn cầu <br> - Caching strategies | 06/03/2026 | 06/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 7 | - **Thực hành:** Kiến trúc ứng dụng toàn cầu <br> &emsp;+ Kết nối VPC <br> &emsp;+ CloudFront CDN <br> &emsp;+ Thiết lập mạng hybrid | 07/03/2026 | 07/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả tuần 9:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hiểu rõ **networking nâng cao trong AWS**.
+* Cấu hình được **VPC Peering và Transit Gateway**.
+* Nắm được **AWS Direct Connect cho hybrid networking**.
+* Triển khai **CloudFront CDN để phân phối nội dung toàn cầu**.
+* Thiết kế thành công **kiến trúc ứng dụng toàn cầu** sử dụng:
+  * VPC Peering
+  * Transit Gateway
+  * Direct Connect
+  * CloudFront
