@@ -1,5 +1,5 @@
 ---
-title: "Participated Event 2"
+title: "Event 2"
 date: 2026-01-01
 weight: 2
 chapter: false
