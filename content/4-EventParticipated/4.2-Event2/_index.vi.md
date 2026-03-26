@@ -3,7 +3,7 @@ title: "Sự kiện 2"
 date: 2026-01-01
 weight: 2
 chapter: false
-pre: "<b>4.2.</b> "
+pre: "<b>3.2.</b> "
 ---
 
 # AI Agents, Prompt Engineering, and AIoT Projects on AWS
