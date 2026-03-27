@@ -1,7 +1,7 @@
 ---
 title: "Week 8 Worklog"
 date: 2026-02-23
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
@@ -20,12 +20,12 @@ pre: " <b> 1.8. </b> "
 
 | Ngày | Công việc | Ngày bắt đầu | Ngày kết thúc | Tài liệu |
 | --- | --------- | ------------ | ------------- | -------- |
-| Thứ 2 | - Giới thiệu Monitoring & Logging <br> - Tổng quan CloudWatch | 23/02/2026 | 23/02/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thứ 3 | - CloudWatch metrics <br> - Tạo alarms | 24/02/2026 | 24/02/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thứ 4 | - CloudTrail concepts <br> - Thiết lập audit logging | 25/02/2026 | 25/02/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thứ 5 | - AWS X-Ray overview <br> - Distributed tracing | 26/02/2026 | 26/02/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thứ 6 | - Tích hợp các dịch vụ monitoring <br> - Phân tích logs & traces | 27/02/2026 | 27/02/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thứ 7 | - **Thực hành:** Thiết lập hệ thống monitoring toàn diện <br> &emsp;+ CloudWatch dashboards & alarms <br> &emsp;+ CloudTrail logging <br> &emsp;+ X-Ray tracing | 28/02/2026 | 28/02/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 2 | - Giới thiệu Monitoring & Logging <br> - Tổng quan CloudWatch | 09/03/2026 | 09/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 3 | - CloudWatch metrics <br> - Tạo alarms | 10/03/2026 | 10/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 4 | - CloudTrail concepts <br> - Thiết lập audit logging | 11/03/2026 | 11/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 5 | - AWS X-Ray overview <br> - Distributed tracing | 12/03/2026 | 12/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 6 | - Tích hợp các dịch vụ monitoring <br> - Phân tích logs & traces | 13/03/2026 | 13/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ 7 | - **Thực hành:** Thiết lập hệ thống monitoring toàn diện <br> &emsp;+ CloudWatch dashboards & alarms <br> &emsp;+ CloudTrail logging <br> &emsp;+ X-Ray tracing | 14/03/2026 | 14/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 
