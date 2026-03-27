@@ -1,7 +1,7 @@
 ---
 title: "Week 10 Worklog"
 date: 2026-03-09
-weight: 1
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
@@ -20,12 +20,12 @@ pre: " <b> 1.10. </b> "
 
 | Day | Tasks | Start Date | End Date | Resources |
 | --- | ----- | ---------- | -------- | --------- |
-| Mon | - Introduction to DevOps in AWS <br> - CodeCommit overview | 09/03/2026 | 09/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Tue | - CodeBuild concepts <br> - Build projects | 10/03/2026 | 10/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Wed | - CodeDeploy overview <br> - Deployment strategies | 11/03/2026 | 11/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thu | - CodePipeline automation <br> - Create pipeline | 12/03/2026 | 12/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Fri | - CloudFormation basics <br> - Infrastructure as Code | 13/03/2026 | 13/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Sat | - **Hands-on:** Automated deployment pipeline <br> &emsp;+ Source (CodeCommit) <br> &emsp;+ Build (CodeBuild) <br> &emsp;+ Deploy (CodeDeploy) <br> &emsp;+ Orchestration (CodePipeline) | 14/03/2026 | 14/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Mon | - Introduction to DevOps in AWS <br> - CodeCommit overview | 23/03/2026 | 23/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Tue | - CodeBuild concepts <br> - Build projects | 24/03/2026 | 24/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Wed | - CodeDeploy overview <br> - Deployment strategies | 25/03/2026 | 25/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thu | - CodePipeline automation <br> - Create pipeline | 26/03/2026 | 26/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Fri | - CloudFormation basics <br> - Infrastructure as Code | 27/03/2026 | 27/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Sat | - **Hands-on:** Automated deployment pipeline <br> &emsp;+ Source (CodeCommit) <br> &emsp;+ Build (CodeBuild) <br> &emsp;+ Deploy (CodeDeploy) <br> &emsp;+ Orchestration (CodePipeline) | 28/03/2026 | 28/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 
