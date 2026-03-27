@@ -1,7 +1,7 @@
 ---
 title: "Week 9 Worklog"
 date: 2026-03-02
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
@@ -20,12 +20,12 @@ pre: " <b> 1.9. </b> "
 
 | Day | Tasks | Start Date | End Date | Resources |
 | --- | ----- | ---------- | -------- | --------- |
-| Mon | - Introduction to Advanced Networking <br> - VPC Peering concepts | 02/03/2026 | 02/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Tue | - Transit Gateway overview <br> - Connect multiple VPCs | 03/03/2026 | 03/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Wed | - AWS Direct Connect concepts <br> - Hybrid connectivity | 04/03/2026 | 04/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thu | - CloudFront overview <br> - CDN configuration | 05/03/2026 | 05/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Fri | - Optimize global delivery <br> - Caching strategies | 06/03/2026 | 06/03/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Sat | - **Hands-on:** Global application architecture <br> &emsp;+ VPC connectivity <br> &emsp;+ CloudFront CDN <br> &emsp;+ Hybrid network setup | 07/03/2026 | 07/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Mon | - Introduction to Advanced Networking <br> - VPC Peering concepts | 16/03/2026 | 16/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Tue | - Transit Gateway overview <br> - Connect multiple VPCs | 17/03/2026 | 17/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Wed | - AWS Direct Connect concepts <br> - Hybrid connectivity | 18/03/2026 | 18/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thu | - CloudFront overview <br> - CDN configuration | 19/03/2026 | 19/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Fri | - Optimize global delivery <br> - Caching strategies | 20/03/2026 | 20/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Sat | - **Hands-on:** Global application architecture <br> &emsp;+ VPC connectivity <br> &emsp;+ CloudFront CDN <br> &emsp;+ Hybrid network setup | 21/03/2026 | 21/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 
