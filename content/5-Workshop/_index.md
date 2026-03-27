@@ -5,21 +5,20 @@ weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Serverless Website Security Assessment Platform
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+**AWS Serverless Architecture** provides a way to build and run applications and services without managing infrastructure. It allows you to focus purely on your application code and business logic while inherently optimizing for high availability and cost-efficiency.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+In this lab, you will learn how to build, deploy, and test a fully serverless web application designed to perform basic security assessments on target URLs.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+You will utilize three core AWS services to create this secure, scalable platform: Amazon S3, Amazon CloudFront, and AWS Lambda. These services work together to deliver a tightly secured frontend and a dynamic backend processing engine:
+
++ **Amazon S3** - Acts as the secure storage repository for your static website assets (HTML, CSS, JS). Access to this bucket is strictly restricted so that content can only be served through the CDN.
++ **Amazon CloudFront** - Serves as the Content Delivery Network (CDN). It provides HTTPS encryption, global caching, and securely delivers the frontend from S3 to end-users utilizing Origin Access Control (OAC) to prevent direct public access to the bucket.
++ **AWS Lambda** - Functions as the backend computing engine. It receives assessment requests triggered from the frontend, executes the security scanning logic, and returns the generated results.
 
 #### Content
 
