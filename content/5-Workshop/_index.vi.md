@@ -6,23 +6,19 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Nền tảng Đánh giá Bảo mật Website Serverless
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+**Kiến trúc Serverless trên AWS** cung cấp giải pháp để xây dựng và vận hành các ứng dụng mà không cần quản lý hạ tầng máy chủ. Mô hình này cho phép bạn tập trung hoàn toàn vào mã nguồn và logic nghiệp vụ, đồng thời tự động tối ưu hóa tính sẵn sàng cao và chi phí.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Trong bài lab này, bạn sẽ học cách xây dựng, triển khai và kiểm thử một ứng dụng web serverless hoàn chỉnh, có chức năng thực hiện các đánh giá an toàn thông tin cơ bản đối với các URL mục tiêu.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+Bạn sẽ sử dụng ba dịch vụ lõi của AWS để tạo ra nền tảng bảo mật và có khả năng mở rộng này: Amazon S3, Amazon CloudFront và AWS Lambda. Ba dịch vụ này kết hợp chặt chẽ với nhau để cung cấp một giao diện frontend an toàn và một bộ máy xử lý backend linh hoạt:
 
++ **Amazon S3** - Đóng vai trò là nơi lưu trữ an toàn cho các tệp giao diện web tĩnh (HTML, CSS, JS). Quyền truy cập vào bucket này được thiết lập hạn chế tuyệt đối, chỉ cho phép phân phối nội dung thông qua hệ thống CDN.
++ **Amazon CloudFront** - Đóng vai trò là Mạng phân phối nội dung (CDN). Dịch vụ này cung cấp mã hóa đường truyền HTTPS, bộ nhớ đệm toàn cầu và phân phối an toàn frontend từ S3 đến người dùng cuối thông qua tính năng Origin Access Control (OAC), giúp ngăn chặn mọi truy cập trực tiếp từ Internet.
++ **AWS Lambda** - Hoạt động như bộ máy xử lý tính toán backend. Dịch vụ này tiếp nhận các yêu cầu đánh giá từ frontend, thực thi đoạn mã logic quét bảo mật và trả về kết quả quét.
 #### Nội dung
 
 1. [Tổng quan về workshop](5.1-Workshop-overview/)
