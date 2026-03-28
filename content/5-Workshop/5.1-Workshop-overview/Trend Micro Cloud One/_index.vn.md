@@ -1,9 +1,12 @@
 ---
-title: "Trend Micro Cloud One"
-weight: 1
+title : "Trend Micro Cloud One"
+date : 2026-03-27
+weight : 1
+chapter : false
+pre : " <b> 4.1.1. </b> "
 ---
 
-# Trend Micro Cloud One
+
 
 ## Trend Micro Cloud One là gì?
 
