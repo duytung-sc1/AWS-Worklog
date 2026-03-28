@@ -1,40 +1,44 @@
 ---
-title : "Create a gateway endpoint"
+title : "Testing your Deployment"
 date : 2024-01-01 
 weight : 1
 chapter : false
-pre : " <b> 5.3.1 </b> "
+pre : " <b> 4.3.1 </b> "
 ---
 
-1. Open the [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. In the navigation pane, choose **Endpoints**, then click **Create Endpoint**:
+# Testing your Deployment
 
-{{% notice note %}}
-You will see **6 existing VPC endpoints** that support **AWS Systems Manager (SSM)**. These endpoints were deployed automatically by the **CloudFormation Templates** for this workshop.
-{{% /notice %}}
+## Generating your First Detection
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+To test your deployment, you’ll need to generate a malware detection using the eicar file. Follow the instructions below.
+This video here also demostrate the steps-by-steps if you prefer to check additional details before following the steps.
+[Trend Micro Cloud One](https://youtu.be/2WDpQ7KgjRo?si=4a3GP_3EHVrXXYdG)
 
-3. In the Create endpoint console:
-+ Specify name of the endpoint: ```s3-gwe```
-+ In service category, choose **AWS services**
+1. In the AWS console, open AWS CloudShell in a new tab.
+To download the eicar test file, in CloudShell run this command: `wget https://secure.eicar.org/eicar.com.txt`
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/9e880df0-6297-4d6f-bbc3-085e41e6cb29" />
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+Upload the eicar file to the S3 bucket created previosuly: `aws s3 cp eicar.com.txt s3://name-of-bucket-goes-here/eicar.txt`
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3df5c887-9838-42d5-9b6e-561518f0aa22" />
 
-+ In **Services**, type ```s3``` in the search box and choose the service with type **gateway**
+2. After successful upload navigate to S3 and find your S3 bucket that you defined to be scanned by File Storage Security.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/b87250f2-b8bc-45f3-99ac-b4b6f461ba76" />
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+3. Select the uploaded eicar file.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/c41502b3-bfec-423d-914c-b4eb45bb422f" />
 
-+ For VPC, select **VPC Cloud** from the drop-down.
-+ For **Configure route tables**, select the route table that is already associated with **two subnets** (note: this is not the main route table for the VPC, but a second route table created by CloudFormation).
+4. Examine the tags applied from the scan results.
+Scroll to the Tags section, you will see the details like the example below:
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/50575dee-1c10-446d-8430-bc14e71f21aa" />
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+Look for the following tags:
+* fss-scan-date "date_and_time"
+* fss-scan-result "malicious"
+* fss-scanned "true"
 
-+ **For Policy**, leave the default option, **Full Access**, to allow full access to the service. You will deploy **a VPC endpoint policy** in a later lab module to demonstrate restricting access to **S3 buckets** based on policies.
+The tags indicate that File Storage Security scanned the file and tagged it correctly as malware. You have now tested your File Storage Security deployment.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
+You could also check in the Cloud One - File Storage Security dashboard to look for how many files have been scanned and recognized as malicious.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/f0006b00-469c-4dc5-ba9a-0ba75ec69f99" />
 
-+ Do not add a tag to the VPC endpoint at this time.
-+ Click **Create endpoint**, then click x after receiving a successful creation message.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+You could do the same process with a safe file and see how Cloud One - File Storage Security will be tagging it in the object.
