@@ -1,111 +1,102 @@
 ---
-title : "On-premises DNS Simulation"
+title : "Deploy Lifecycle"
 date : 2024-01-01
 weight : 4
 chapter : false
-pre : " <b> 5.4.4 </b> "
+pre : " <b> 4.4.4. </b> "
 ---
 
-AWS PrivateLink endpoints have a fixed IP address in each Availability Zone where they are deployed, for the life of the endpoint (until it is deleted). These IP addresses are attached to Elastic Network Interfaces (ENIs). AWS recommends using DNS to resolve the IP addresses for endpoints so that downstream applications use the latest IP addresses when ENIs are added to new AZs, or deleted over time.
+## Automate Storage Stack deployment to new S3 buckets.
 
-In this section, you will create a forwarding rule to send DNS resolution requests from a simulated on-premises environment to a Route 53 Private Hosted Zone. This section leverages the infrastructure deployed by CloudFormation in the Prepare the environment section.
+In this integration, we will deploy a CloudFormation template to ensure File Storage Security monitors any new S3 buckets that are created. Additionally anytime a S3 bucket resource is terminated, this template will automatically remove all deployed security resources to monitor the bucket.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/6b36a2df-ea3f-402c-9921-025fec2c965d" />
 
-#### Create DNS Alias Records for the Interface endpoint
-1. Navigate to the [Route 53 management console](https://us-east-1.console.aws.amazon.com/route53/v2/hostedzones?region=us-east-1#) (Hosted Zones section).  The CloudFormation template you deployed in the Prepare the environment section created this Private Hosted Zone. Click on the name of the Private Hosted Zone, s3.us-east-1.amazonaws.com:
+---
 
-![hosted zone](/images/5-Workshop/5.4-S3-onprem/hosted-zone.png)
+## Prerequisites
 
-2. Create a new record in the Private Hosted Zone:
+### 1. Obtain your Cloud One Account Region.
+* Sign into **Cloud One**.
+* Select **Account Settings**.
+* Copy down the **Region**: e.g `us-1`.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/58769d11-9a16-45fd-99bc-422f8b3c812d" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/574d2a10-cd42-4254-abd1-871c7c409896" />
 
-![Create record](/images/5-Workshop/5.4-S3-onprem/create-record1.png)
+### 2. Create a new API Key in Cloud One.
+* Under **Account Settings** in Cloud One, select **API Keys** from the left-hand menu.
+* Click **New**.
+* **API Key Alias**: `immersion_day`
+* **Description**: Optional.
+* **Role**: `Full Access`
+* **Language**: preferred language.
+* **Timezone**: preferred timezone.
+* Click **Next**.
+* **Copy down your API Key** in a safe place.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/c6fc1793-82df-4033-aab8-c98172dba78e" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/02e715fc-6bd0-4aa9-979a-8ae9fc69b238" />
 
-+ Record name and record type keep default options
-+ Alias Button: Click to enable
-+ Route traffic to: Alias to VPC Endpoint
-+ Region: US East (N. Virginia) [us-east-1]
-+ Choose endpoint: Paste the Regional VPC Endpoint DNS name from your text editor (you saved when doing section 4.3)
+### 3. Obtain the name of the Scanner Stack and the Scanner Stacks SQS URL.
+* Navigate to **AWS CloudFormation**.
+* Locate and select your deployed **Scanner Stack**.
+* Click the tab named **Outputs**.
+* Copy down your **Scanner Stacks name**.
+* Locate the key **ScannerQueueURL**.
+* Copy down the **ScannerQueueURL** value.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/1ad88048-ccb5-4fe3-93e3-33c801f2f17e" />
 
-![record1](/images/5-Workshop/5.4-S3-onprem/record1.png)
+---
 
-3. Click Add another record, and add a second record using the following values. Click Create records when finished to create both records.
-+ Record name: *.
-+ Record type: keep default value (type A)
-+ Alias Button: Click to enable
-+ Route traffic to: Alias to VPC Endpoint
-+ Region: US East (N. Virginia) [us-east-1]
-+ Choose endpoint: Paste the Regional VPC Endpoint DNS name from your text editor
+## Deploy the CloudFormation template below
+[Launch Stack](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=c1fss-lifecycle-workshop&templateURL=https://aws-workshop-c1as-cft-templates.s3.amazonaws.com/fss-lifecycle.yml)
 
-![record 2](/images/5-Workshop/5.4-S3-onprem/record2.png)
+1. **Fill in the required template parameters with the values copied down previously:**
+   * **C1API**: paste your cloud one api key.
+   * **C1RegionEndpoint**: paste your cloud one account region.
+   * **SQSURL**: paste the sanner stack’s sqs url value.
+   * **StackName**: paste the name of your deployed Scanner stack.
+   * Click **Next**.
+   * Optional - Configure tags if desired.
+   * Click **Next**.
+   * Check the box at the bottom to acknowledge IAM resource creation.
+   * Click **Create Stack**.
+LaunchStack()
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/bcb59452-6bdc-42e9-a3e3-b97e2e4404cd" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/fe888208-87fa-4fb9-975d-6fed593a6a68" />
 
-The new records appear in the Route 53 console:
+2. **Monitor the stack deployment** until it reaches status: **CREATE_COMPLETE**.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3b537097-0eca-45bf-bad4-f0ae2919a2db" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/8d93a959-63cb-477e-b920-c9b107397ad6" />
 
-![result](/images/5-Workshop/5.4-S3-onprem/result.png)
+---
 
-#### Create a Resolver Forwarding Rule
+## Test the automation
 
-Route 53 Resolver Forwarding Rules allow you to forward DNS queries from your VPC to other sources for name resolution. Outside of a workshop environment, you might use this feature to forward DNS queries from your VPC to DNS servers running on-premises. In this section, you will simulate an on-premises conditional forwarder by creating a forwarding rule that forwards DNS queries for Amazon S3 to a Private Hosted Zone running in "VPC Cloud" in-order to resolve the PrivateLink interface endpoint regional DNS name.
+### Create a new S3 bucket
+> [CLICK HERE](https://aws.amazon.com/video/watch/5c76e13b7fe/) - Step by step instruction to create a S3.
 
-1. From the Route 53 management console, click **Inbound endpoints** on the left side bar
-2. In the Inbound endpoints console, click the ID of the inbound endpoint
+---
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/378851dc-a6dc-4450-8ac2-78dc65a4031c" />
 
-![Inbound endpoint](/images/5-Workshop/5.4-S3-onprem/route53-1.png)
+### Verify and Clean Up
 
-3. Copy the two IP addresses listed to your text editor
+1. **Monitor CloudFormation**: After the S3 bucket has been created, monitor CloudFormation to see the new Storage stack being deployed automatically. Wait for the stack to reach **CREATE_COMPLETE**.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/91866103-4289-4d85-841d-3a716ad12e17" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/0f858c97-be8d-4eab-a822-26db7fddb59c" />
 
-![Ip addresses](/images/5-Workshop/5.4-S3-onprem/route53-2.png)
+2. **Check Cloud One**: Once the stack reaches create complete, check your Cloud One File Storage Console for the newly monitored bucket.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/6dfb554a-938e-43e7-8431-cc8e9c348d83" />
 
-4. From the Route 53 menu, choose **Resolver** > **Rules**, and click **Create rule**:
+3. **Delete the S3 bucket**:
+   * In AWS navigate to **S3**.
+   * Locate and select the bucket created in the last step.
+   * Click **Delete**.
+   * Confirm deletion by pasting the bucket name and clicking **Delete bucket**.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/15e78b50-005e-4618-882e-285148120ee0" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/6f2a2e85-fe2b-4272-b912-830f06fdaad7" />
 
-![Ip addresses](/images/5-Workshop/5.4-S3-onprem/route53-3.png)
+4. **Monitor Removal**: Check **CloudFormation** to see the stack being removed.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/deed64a2-786f-47e4-baa8-06734c262211" />
 
-5. In the Create rule console:
-+ Name: myS3Rule
-+ Rule type: Forward
-+ Domain name: s3.us-east-1.amazonaws.com
+5. **Final Check**: Once the stack is deleted, check your Cloud One File Storage Console to confirm the bucket is no longer listed as monitored.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/fc91869b-ea2a-4eb9-942a-492760cb2d98" />
 
-![create rule](/images/5-Workshop/5.4-S3-onprem/route53-4.png)
-
-+ VPC: VPC On-prem
-+ Outbound endpoint: VPCOnpremOutboundEndpoint
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/route53-5.png)
-
-+ Target IP Addresses: Enter both IP addresses from your text editor (inbound endpoint addresses) and then click Submit
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/route53-6.png)
-You have successfully created resolver forwarding rule. 
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/route53-7.png)
-
-#### Test the on-premises DNS Simulation
-
-1. Connect to **Test-Interface-Endpoint EC2 instance** with **Session manager**
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/test1.png)
-
-2. Test DNS resolution. The dig command will return the IP addresses assigned to the VPC Interface endpoint running in VPC Cloud (your IP's will be different): dig +short s3.us-east-1.amazonaws.com 
-
-{{% notice note %}}
-The IP addresses returned are the VPC endpoint IP addresses, NOT the Resolver IP addresses you pasted from your text editor. The IP addresses of the Resolver endpoint and the VPC endpoint look similar because they are all from the VPC Cloud CIDR block.
-{{% /notice %}}
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/dig.png)
-
-
-3. Navigate to the VPC menu (Endpoints section), select the S3 Interface endpoint. Click the Subnets tab and verify that the IP addresses returned by Dig match the VPC endpoint:
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/subnet.png)
-
-4. Return to your shell and use the AWS CLI to test listing your S3 buckets:
-
-```
-aws s3 ls --endpoint-url https://s3.us-east-1.amazonaws.com
-```
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/endpoint.png)
-
-5. Terminate your Session Manager session:
-
-![create rule](/images/5-Workshop/5.4-S3-onprem/terminal.png)
-
-In this section you created an Interface endpoint for Amazon S3. This endpoint can be reached from on-premises through Site-to-Site VPN or AWS Direct Connect. Route 53 Resolver outbound endpoints simulated forwarding DNS requests from on-premises to a Private Hosted Zone running the cloud. Route 53 inbound Endpoints recieved the resolution request and returned a response containing the IP addresses of the VPC interface endpoint. Using DNS to resolve the endpoint IP addresses provides high availability in-case of an Availability Zone outage.
