@@ -1,82 +1,81 @@
 ---
-title : "Quarantine Malicious Files"
+title : "Visibility with CloudWatch"
 date : 2024-01-01
-weight : 2
+weight : 1
 chapter : false
-pre : " <b> 4.4.2. </b> "
+pre : " <b> 4.4.1 </b> "
 ---
 
+## Monitor Your Scans with CloudWatch
 
-## Prerequisites
+File Storage Security logs are stored in AWS CloudWatch Logs. These logs contain significantly more detailed information than what is visible in the `fss-*` tags.
 
-### 1. Create Amazon S3 buckets
-* Create a ‘Promote bucket’ to receive clean files. Example: `fss-promote`.
-* Create a ‘Quarantine bucket’ to receive quarantined files. Example: `fss-quarantine`.
+1. To view scan result logs in AWS CloudWatch Logs, go to your AWS account, navigate to **CloudFormation > select your scanner stack > Resources > click the ScannerLogGroup link**.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/788ccafc-edec-4d7f-9925-a75263fa025d" />
 
+2. The AWS CloudWatch service will appear with **Log groups** selected on the left. In the **Log streams** section, click on the log stream with the most recent event time (matching or after the time you added the file to the S3 bucket for scanning) and expand the event message starting with `scanner result`.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/83aa5aff-7a72-4641-94c3-da8b32fcdd04" />
 
->  If you need help on how to create an Amazon S3 bucket, here is the step-by-steps: [Link](https://s3-protection.awsworkshop.io/20_deploy.html#s3-bucket-creation)
+3. The log event will be displayed, and you will see a JSON code block containing scan information along with additional details about the Scanner Lambda. You can use the **Filter Events** box and type: `scanner result`
 
-### 2. Find the ‘ScanResultTopic’ SNS topic ARN
-* In the AWS console, go to **Services > CloudFormation > your all-in-one stack > Resources > your storage stack > Resources**.
-* Scroll down to locate the `ScanResultTopic` Logical ID.
-* Copy the `ScanResultTopic` ARN to a temporary location. It will look like this: 
-  `arn:aws:sns:us-east-1:123445678901:FileStorageSecurity-All-In-One-Stack-StorageStack-1IDPU1PZ2W5RN-ScanResultTopic-N8DD2JH1GRKF`
-<img width="" alt="image" src="https://github.com/user-attachments/assets/64dce4d6-9258-40bf-b0a1-fa670f474898" />
+You will now see security events based on the File Storage Security Scanner, such as:
+* **timestamp**: A unique number corresponding to when the scan took place.
+* **sqs-message-id**: Unique ID for this specific event.
+* **file_url**: The path (URL) to the scanned file in Amazon S3.
+* **scanner_status** and **scanner_status_message**
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/f7d6d54f-86bb-4242-936f-1d9aff249540" />
 
----
-
-## Deploying Post Scan Action (Functions) - Promote and Quarantine
-
-In this case, let’s use the Serverless Application Repository.
-
-1. Visit [the app’s page on the AWS Lambda Console](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/create/app?applicationId=arn:aws:serverlessrepo:us-east-1:415485722356:applications/cloudone-filestorage-plugin-action-promote-or-quarantine).
-2. Fill in the parameters:
-   * `ScanResultTopic`
-   * `ScanningBucketName`
-   * `PromoteBucketName`
-   * `QuarantineBucketName`
-   * `Optionally, you can customize the name of the Cloud Formation stack that will be created`
-3. Check the **I acknowledge that this app creates custom IAM roles** checkbox.
-4. Click **Deploy**.
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/8dec44e3-dfb5-4d1f-b6e5-295ce6367b05" />
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/e98b71a4-1753-44e5-a0ce-8e1348752f9e" />
-
-5. After a couple of minutes, you can click on the **Deployments** tab and expand the deployment to see if the status shows as complete. Then you can move to the next step to test it.
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/26bb5e19-0174-47b0-993d-b1d844c1cf41" />
+The `scanner_status` field can have the following values:
+* **0: “successful scan”**: Indicates the scan completed successfully.
+* **-1: “invalid license status”**: Usually indicates File Storage Security is not fully configured. The most common reason is that ARNs have not been submitted via the File Storage Security console or API. For instructions on submitting ARNs, see the Add Stacks or Deploy Stacks using API sections. This message may also indicate your license is invalid or File Storage Security could not push a new license to your stack.
+* **-2: “unsuccessful scan”**: Indicates the ScannerLambda function could not scan the file.
+* **-3: “scanner error”**: Indicates an internal error occurred within the ScannerLambda function.
+* **-4: “unsuccessful scanner invocation”**: Indicates the ScannerLambda function could not complete the scan. This could be due to a scan timeout or a Lambda throttling error if too many files are scanned simultaneously.
+* **scanning_result**: Provides scan details such as the size of the scanned file and any malware or errors found.
 
 ---
 
-## Test the Application
+## Additional Queries using CloudWatch
 
-To test that the application was deployed properly, you’ll need to generate a malware detection using the `eicar` test file, and then check the Quarantine bucket to make sure the `eicar` file was sent there successfully.
+1. You can search for scan results using AWS CloudWatch Logs Insights. Here is an example of how to set up a query:
+   * In AWS, navigate to the **CloudWatch** service.
+   * On the left menu, under **Logs**, click **Logs Insights**.
+   * In the main pane, click inside the **Select log group(s)** field and type `ScannerLambda`.
+   * Select the Log Group that contains only the word "ScannerLambda" as shown in the example below.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/f5f4bf5d-e9aa-4b51-babe-e14004690c52" />
 
-### 1. Download the Eicar test file
-> **NOTE:** We recommend using the AWS CloudShell process in the previous “Testing your deployment” section as most users cannot disable their virus scanner.
+2. Replace the contents of the text box with the following lines and click **Run Query**:
+   ```text
+   fields @timestamp, @message
+   | filter @message like "scanner result"
+   | sort @timestamp desc
+   | limit 20
+3. You should be able to see the events you generated:
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/d2a78beb-d1e9-4379-8914-2a50f88647c5" />
 
-* Temporarily disable your virus scanner or create an exception, otherwise it will catch the `eicar` file and delete it.
-* **Browser:** Go to the [eicar file page](https://secure.eicar.org/eicar_com.zip) and download `eicar_com.zip` or any of the other versions of this file.
-* **CLI:** Run the following command:
-    ```bash
-    curl -O [https://secure.eicar.org/eicar_com.zip](https://secure.eicar.org/eicar_com.zip)
-    ```
+4. By expanding the event details, you can see the event details generated by File Storage Security in JSON format:
 
-### 2. Upload the eicar file to the ScanningBucket
+```
+{
+   "scanner result":{
+      "timestamp":1630102559.6158442,
+      "sqs_message_id":"abcf8e38-7a53-4880-9547-6418a4e1d018",
+      "xamz_request_id":"",
+      "file_url":"[https://modernization-workshop-devdays-fernando.s3.amazonaws.com/eicarcom2.zip](https://modernization-workshop-devdays-fernando.s3.amazonaws.com/eicarcom2.zip)",
+      "scanner_status":0,
+      "scanner_status_message":"successful scan",
+      "scanning_result":{
+         "TotalBytesOfFile":308,
+         "Findings":[
+            {
+               "malware":"Eicar_test_file",
+               "type":"Virus"
+            }
+         ],
+         "Error":"",
+         "Codes":[
 
-**Using the AWS console:**
-1. Go to **CloudFormation > Stacks > [your all-in-one stack] > [your nested storage stack]**.
-2. In the main pane, click the **Outputs** tab and then copy the **ScanningBucket** string. Search the string in the Amazon S3 console to find your ScanningBucket.
-3. Click **Upload** and upload `eicar_com.zip`. File Storage Security scans the file and detects malware.
-4. Still in Amazon S3, go to your **Quarantine bucket** and make sure that the `eicar.zip` file is present.
-5. Go back to your **ScanningBucket** and make sure the `eicar.zip` is no longer there.
-
->  *It can take 15-30 seconds or more for the 'move' operation to complete, and during this time, you may see the file in both buckets.*
-
-**Using the AWS CLI:**
-Enter the following AWS CLI command to upload the Eicar test file to the scanning bucket:
-`aws s3 cp eicar_com.zip s3://<YOUR_SCANNING_BUCKET>`
-Where: `<YOUR_SCANNING_BUCKET>` is replaced with the ScanningBucket name.
->  *NOTE: It can take about 15-30 seconds or more for the file to move.*
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/92eee487-6ac2-4615-bccf-d437f806b973" />
-**Using the AWS CLI or the AWS Console, you should be able to see the eicar file in your `QuarantineBucketName` with the correct tags.
-
-
+         ]
+      }
+   }
+}
