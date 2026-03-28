@@ -1,7 +1,7 @@
 ---
 title : "WORKSHOP"
 date : 2026-03-27
-weight : 1
+weight : 4
 chapter : false
 pre : " <b> 4. </b> "
 ---
