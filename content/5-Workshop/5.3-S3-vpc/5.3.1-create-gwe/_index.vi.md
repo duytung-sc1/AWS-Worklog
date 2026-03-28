@@ -1,40 +1,44 @@
 ---
-title : "Tạo một Gateway Endpoint"
+title : "Kiểm tra Triển khai"
 date : 2024-01-01 
 weight : 1
 chapter : false
-pre : " <b> 5.3.1 </b> "
+pre : " <b> 4.3.1 </b> "
 ---
 
-1. Mở [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. Trong thanh điều hướng, chọn **Endpoints**, click **Create Endpoint**:
+# Kiểm tra Triển khai 
 
-{{% notice note %}}
-Bạn sẽ thấy 6 điểm cuối VPC hiện có hỗ trợ AWS Systems Manager (SSM). Các điểm cuối này được Mẫu CloudFormation triển khai tự động cho workshop này.
-{{% /notice %}}
+## Tạo Phát hiện Đầu tiên
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+Để kiểm tra quá trình triển khai của bạn, bạn sẽ cần tạo ra một phát hiện phần mềm độc hại bằng cách sử dụng tệp eicar. Hãy làm theo các hướng dẫn bên dưới.
+Video tại đây cũng minh họa từng bước nếu bạn muốn xem thêm chi tiết trước khi thực hiện.
+[Trend Micro Cloud One](https://youtu.be/2WDpQ7KgjRo?si=4a3GP_3EHVrXXYdG)
 
-3. Trong Create endpoint console:
-+ Đặt tên cho endpoint: s3-gwe
-+ Trong service category, chọn **aws services**
+1. Trong bảng điều khiển AWS, hãy mở AWS CloudShell ở một tab mới.
+Để tải xuống tệp kiểm tra eicar, hãy chạy lệnh sau trong CloudShell: `wget https://secure.eicar.org/eicar.com.txt`
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/9e880df0-6297-4d6f-bbc3-085e41e6cb29" />
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+Tải tệp eicar lên S3 bucket mà bạn đã tạo trước đó: `aws s3 cp eicar.com.txt s3://name-of-bucket-goes-here/eicar.txt`
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3df5c887-9838-42d5-9b6e-561518f0aa22" />
 
-+ Trong **Services**, gõ "s3" trong hộp tìm kiếm và chọn dịch vụ với loại **gateway**
+2. Sau khi tải lên thành công, hãy điều hướng đến phần S3 và tìm S3 bucket mà bạn đã thiết lập để quét bằng File Storage Security.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/b87250f2-b8bc-45f3-99ac-b4b6f461ba76" />
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
+3. Chọn tệp eicar vừa được tải lên.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/c41502b3-bfec-423d-914c-b4eb45bb422f" />
 
-+ Đối với VPC, chọn **VPC Cloud** từ drop-down menu.
-+ Đối với Route tables, chọn bảng định tuyến mà đã liên kết với 2 subnets (lưu ý: đây không phải là bảng định tuyến chính cho VPC mà là bảng định tuyến thứ hai do CloudFormation tạo).
+4. Kiểm tra các thẻ (tags) được áp dụng từ kết quả quét.
+Cuộn xuống phần Thẻ (Tags), bạn sẽ thấy các chi tiết giống như ví dụ bên dưới:
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/50575dee-1c10-446d-8430-bc14e71f21aa" />
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
+Hãy tìm các thẻ sau:
+* fss-scan-date "date_and_time"
+* fss-scan-result "malicious"
+* fss-scanned "true"
 
-+ Đối với Policy, để tùy chọn mặc định là Full access để cho phép toàn quyền truy cập vào dịch vụ. Bạn sẽ triển khai VPC endpoint policy trong phần sau để chứng minh việc hạn chế quyền truy cập vào S3 bucket dựa trên các policies.
+Các thẻ này chỉ ra rằng File Storage Security đã quét tệp và gắn thẻ nó là phần mềm độc hại một cách chính xác. Bạn hiện đã kiểm tra thành công quá trình triển khai File Storage Security của mình.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
+Bạn cũng có thể kiểm tra trong bảng điều khiển Cloud One - File Storage Security để xem có bao nhiêu tệp đã được quét và được nhận dạng là độc hại.
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/f0006b00-469c-4dc5-ba9a-0ba75ec69f99" />
 
-+ Không thêm tag vào VPC endpoint.
-+ Click Create endpoint, click x sau khi nhận được thông báo tạo thành công.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+Bạn có thể thực hiện quy trình tương tự với một tệp an toàn và xem cách Cloud One - File Storage Security sẽ gắn thẻ cho đối tượng đó như thế nào.
