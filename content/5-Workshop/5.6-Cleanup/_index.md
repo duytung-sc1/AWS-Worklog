@@ -3,30 +3,17 @@ title : "Clean up"
 date : 2024-01-01
 weight : 6
 chapter : false
-pre : " <b> 5.6. </b> "
+pre : " <b> 4.5. </b> "
 ---
-Congratulations on completing this workshop! 
-In this workshop, you learned architecture patterns for accessing Amazon S3 without using the Public Internet. 
-+ By creating a gateway endpoint, you enabled direct communication between EC2 resources and Amazon S3, without traversing an Internet Gateway. 
-+ By creating an interface endpoint you extended S3 connectivity to resources running in your on-premises data center via AWS Site-to-Site VPN or Direct Connect. 
 
-#### clean up
-1. Navigate to Hosted Zones on the left side of Route 53 console. Click the name of *s3.us-east-1.amazonaws.com* zone. Click Delete and confirm deletion by typing delete. 
+# Clean your Environment
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+To clean your environment, go to your CloudFormation stack called **All-in-one-TM-FileStorageSecurity** and click in delete, this will automatically delete the Scanner and Storage stack all together:
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/69bf5d08-a280-406e-a291-519d8f957c3b" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3ad1e364-3a9a-4992-a8f2-b1a5a701081b" />
 
-2. Disassociate the Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+After the CloudFormation finish the deletion process (Usually takes up to 5 minutes), you can go back to your **Cloud One File Storage Security** console and select your stack and also delete the stack:
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/3938c40c-21b4-4a2b-b2ee-e1b7f9025b00" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/0a4f9024-58aa-4012-adfa-3a5986a9cdd7" />
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
-
-4. Open the CloudFormation console  and delete the two CloudFormation Stacks that you created for this lab:
-+ PLOnpremSetup
-+ PLCloudSetup
-
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
-
-5. Delete S3 buckets
-+ Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
-
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+You have successfully cleaned up your environment.
