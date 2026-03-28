@@ -1,20 +1,18 @@
 ---
-title : "Access S3 from on-premises"
+title : "Automation and Notification"
 date : 2024-01-01
-weight : 4
+weight : 5
 chapter : false
-pre : " <b> 5.4. </b> "
+pre : " <b> 4.4. </b> "
 ---
 
-#### Overview
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+##Automate deployment and scan notification.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
+After Cloud One - File Storage Security completes a scan, the scan results are tagged to the file and published to Amazon SNS topic `ScanResultTopic`.
 
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
+If you want to do more with the results, you’ll have to create or add a post-action to take place after the scan. We provide many samples of integrations that can be done with Cloud One File Storage Security in our GitHub page, one of the most used Post-Actions is the ability to send clean files to one Amazon S3 bucket (promote) and send malicious files to another Amazon S3 bucket (quarantine). We also provide an API to help with creating your own post-scan actions.
 
 
 
+Let’s start creating the post-actions for automation and monitoring.
