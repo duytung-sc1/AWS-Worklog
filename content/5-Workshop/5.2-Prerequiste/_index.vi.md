@@ -1,5 +1,5 @@
 ---
-title : "Các Bước Chuẩn "
+title : "Các Bước Chuẩn Bị"
 date : 2026-03-27
 weight : 2
 chapter : false
