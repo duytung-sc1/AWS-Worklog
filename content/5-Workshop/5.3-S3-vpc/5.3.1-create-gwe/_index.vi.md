@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 4.3.1 </b> "
 ---
 
-# Kiểm tra Triển khai 
+
 
 ## Tạo Phát hiện Đầu tiên
 
