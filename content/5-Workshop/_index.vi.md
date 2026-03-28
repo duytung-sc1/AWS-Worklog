@@ -9,7 +9,7 @@ pre : " <b> 4. </b> "
 # AWS S3 BUCKET MALWARE SCANNING WITH TREND MICRO
 
 ---
-![trendmicro](static/images/5-Workshop/TM_logo.png)
+![trendmicro](/images/5-Workshop/TM_logo.png)
 ## Welcome
 
 Chào mừng bạn đến với workshop thực hành **AWS S3 Bucket Malware Scanning with Trend Micro**.
