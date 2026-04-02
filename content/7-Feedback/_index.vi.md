@@ -7,7 +7,6 @@ pre: " <b> 6. </b> "
 ---
 
 
-# Chia sẻ và Đánh giá
 
 ## 1. Cảm nhận về chương trình
 
