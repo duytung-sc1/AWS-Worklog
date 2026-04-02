@@ -16,7 +16,7 @@ Chương trình thực tập mang lại trải nghiệm tích cực với môi t
 
 ## 2. Mức độ hài lòng
 
-Tôi đánh giá mức độ hài lòng đối với chương trình ở mức **cao (4.5/5)**. Chương trình đáp ứng tốt kỳ vọng ban đầu và mang lại nhiều giá trị thiết thực về cả chuyên môn lẫn kỹ năng làm việc trong môi trường doanh nghiệp.
+Tôi đánh giá mức độ hài lòng đối với chương trình ở mức **cao (4.4/5)**. Chương trình đáp ứng tốt kỳ vọng ban đầu và mang lại nhiều giá trị thiết thực về cả chuyên môn lẫn kỹ năng làm việc trong môi trường doanh nghiệp.
 
 ---
 
