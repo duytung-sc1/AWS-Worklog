@@ -15,7 +15,7 @@ The internship program provided a highly positive experience within a profession
 
 ## 2. Satisfaction Level
 
-Overall, I rate my satisfaction with the program as **high (4.5/5)**. The internship not only met my initial expectations but also delivered substantial value in terms of both technical knowledge and professional skill development.
+Overall, I rate my satisfaction with the program as **high (4.4/5)**. The internship not only met my initial expectations but also delivered substantial value in terms of both technical knowledge and professional skill development.
 
 ---
 
