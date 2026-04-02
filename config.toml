@@ -1,4 +1,4 @@
-baseURL = "https://duytung-sc1.github.io/my-report/"
+baseURL = "https://duytung-sc1.github.io/AWS-Worklog/"
 relativeURLs = true
 canonifyURLs = true
 defaultContentLanguage = "en"
