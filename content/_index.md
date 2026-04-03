@@ -27,7 +27,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 05/01/2026 to 18/04/2026
 
-<img src="/images/hinhnen.jpg" width="150" style="border-radius: 14px;">
+<img src="/images/avarta.jpg" width="150" style="border-radius: 14px;">
 
 ### Report Content
 
