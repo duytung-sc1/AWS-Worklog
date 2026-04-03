@@ -5,7 +5,7 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-# IrisAuth — Code Protector Platform
+# GUARDSCRIPT — Code Protector Platform
 
 ## Project Proposal
 
