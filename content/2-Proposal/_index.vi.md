@@ -74,7 +74,7 @@ Client (browser / loader)
   → API Gateway WebSocket (real-time)
   → CloudWatch Logs / Alarms / Dashboard
 ```
-![Kiến trúc hệ thống GuardScript](/images/2-Proposal/kienntrucaws.jpg)
+![Kiến trúc hệ thống GuardScript](/images/2-Proposal/kientrucaws.jpg)
 
 #### Dịch vụ AWS sử dụng
 
