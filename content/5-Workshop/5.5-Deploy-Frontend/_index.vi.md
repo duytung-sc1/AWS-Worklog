@@ -3,7 +3,7 @@ title: "Giai đoạn 3: Triển khai Frontend"
 date: 2026-03-26
 weight: 5
 chapter: false
-pre: " <b> 5.5. </b> "
+pre: " <b> 4.5. </b> "
 ---
 
 Trong giai đoạn này bạn sẽ upload các static frontend assets lên S3 frontend bucket, sau đó invalidate CloudFront cache để các file mới được phục vụ ngay lập tức.
