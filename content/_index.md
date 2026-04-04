@@ -21,13 +21,15 @@ chapter: false
 
 &emsp; **Major:** Information Assurance
 
+&emsp; **Class:** SE196572
+
 &emsp; **Internship Company:** Bootcamp - First Cloud AI Journey @ AWS Study Group.
 
 &emsp; **Internship Position:** FCJ Cloud Intern
 
 &emsp; **Internship Duration:** From 05/01/2026 to 18/04/2026
 
-<img src="/images/avatar.jpg" width="150" style="border-radius: 14px;">
+<img src="/images/avatar.jpg" width="200" style="border-radius: 14px;">
 
 ### Report Content
 
