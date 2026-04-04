@@ -3,7 +3,7 @@ title: "Phase 4: Configure & Validate"
 date: 2026-03-26
 weight: 6
 chapter: false
-pre: " <b> 5.6. </b> "
+pre: " <b> 4.6. </b> "
 ---
 
 In this final setup phase you will seed the required initial configuration into DynamoDB and run smoke tests to validate the deployment end-to-end.
