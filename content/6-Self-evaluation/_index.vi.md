@@ -1,9 +1,9 @@
 ---
 title: "Tự đánh giá"
 date: 2024-01-01
-weight: 5
+weight: 4
 chapter: false
-pre: " <b> 5. </b> "
+pre: " <b> 4. </b> "
 ---
 
 Trong quá trình thực tập với vai trò **FCJ Cloud Intern** từ **January 5, 2026** đến **April 17, 2026**, tôi đã có cơ hội học tập, thực hành và vận dụng những kiến thức đã được học tại trường vào một môi trường làm việc và nghiên cứu thực tế về điện toán đám mây.  
