@@ -35,7 +35,7 @@ Client (browser / loader)
   → CloudWatch Logs / Alarms / Dashboard
 ```
 
-![Kiến trúc hệ thống GuardScript](/images/2-Proposal/architecture.jpg)
+![Kiến trúc hệ thống GuardScript](/images/2-Proposal/kientrucaws.jpg)
 
 #### Nội dung
 
