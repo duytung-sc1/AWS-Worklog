@@ -17,13 +17,15 @@ chapter: false
 
 &emsp; **Ngành:** An Toàn Thông Tin
 
+&emsp; **Lớp:** SE196572
+
 &emsp; **Công ty thực tập:** Bootcamp - First Cloud AI Journey @ AWS Study Group.
 
 &emsp; **Vị trí thực tập:** FCJ Cloud Intern
 
 &emsp; **Thời gian thực tập:** Từ ngày 05/01/2026 đến ngày 18/04/2026
 
-<img src="/images/avatar.jpg" width="150" style="border-radius: 14px;">
+<img src="/images/avatar.jpg" width="200" style="border-radius: 14px;">
 
 
 
