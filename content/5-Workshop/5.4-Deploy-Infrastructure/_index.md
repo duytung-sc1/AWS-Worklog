@@ -3,7 +3,7 @@ title: "Phase 2: Deploy AWS Infrastructure"
 date: 2026-03-26
 weight: 4
 chapter: false
-pre: " <b> 5.4. </b> "
+pre: " <b> 4.4. </b> "
 ---
 
 In this phase you will use AWS SAM to build and deploy the full GuardScript infrastructure stack, including Lambda, DynamoDB tables, S3 buckets, CloudFront, WebSocket API, and CloudWatch.
