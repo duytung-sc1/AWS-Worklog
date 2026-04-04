@@ -3,7 +3,7 @@ title: "Giai đoạn 4: Cấu hình & Kiểm tra"
 date: 2026-03-26
 weight: 6
 chapter: false
-pre: " <b> 5.6. </b> "
+pre: " <b> 4.6. </b> "
 ---
 
 Trong giai đoạn cuối này bạn sẽ seed cấu hình khởi tạo vào DynamoDB và chạy smoke tests để kiểm tra toàn bộ deployment.
