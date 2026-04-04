@@ -1,9 +1,9 @@
 ---
 title: "Self-Assessment"
 date: 2024-01-01
-weight: 4
+weight: 5
 chapter: false
-pre: " <b> 4. </b> "
+pre: " <b> 5. </b> "
 ---
 
 During my internship as an **FCJ Cloud Intern** from **January 5, 2026** to **April 17, 2026**, I had the opportunity to learn, practice, and apply the knowledge gained from university to a real-world cloud computing environment.  
