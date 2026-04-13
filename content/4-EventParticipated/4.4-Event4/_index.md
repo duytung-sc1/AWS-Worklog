@@ -3,7 +3,7 @@ title: "Event 4"
 date: 2026-04-10
 weight: 4
 chapter: false
-pre: " <b> 4.4. </b> "
+pre: " <b> 3.4. </b> "
 ---
 
 # Event 4: AWS Networking, Security and Identity & Access Management
