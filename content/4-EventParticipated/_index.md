@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-### [Event 1](3.1-Event1/)
+### [Event 1](4.1-Event1/)
 &emsp;**Event Name:** AWS re:Invent 2025 Recap (Vietnam)  
 &emsp;**Date & Time:** January 27, 2026  
 &emsp;**Location:** AWS Vietnam Office (Floor 26), Ho Chi Minh City  
@@ -14,7 +14,7 @@ pre: " <b> 3. </b> "
 
 ---
 
-### [Event 2](3.2-Event2/)
+### [Event 2](4.2-Event2/)
 &emsp;**Event Name:** AI Agents, Prompt Engineering, and AIoT Projects on AWS  
 &emsp;**Date & Time:** March 14, 2026  
 &emsp;**Location:** AWS Vietnam Office (Floor 26), Ho Chi Minh City  
@@ -22,7 +22,7 @@ pre: " <b> 3. </b> "
 
 ---
 
-### [Event 3](3.3-Event3/)
+### [Event 3](4.3-Event3/)
 &emsp;**Event Name:** Secure Hybrid Access to S3 using VPC Endpoints<br>
 &emsp;**Date & Time:** 9:00 a.m 4th April<br>
 &emsp;**Location:** Academy Hall FPT University<br>
@@ -30,7 +30,7 @@ pre: " <b> 3. </b> "
 
 ---
 
-### [Event 4](3.4-Event4/)
+### [Event 4](4.4-Event4/)
 &emsp;**Event Name:** AWS Networking, Security & IAM Workshop<br>
 &emsp;**Date & Time:** 9:00a.m th April<br>
 &emsp;**Location:** Academy Hall FPT university<br>
