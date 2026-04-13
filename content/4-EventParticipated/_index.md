@@ -23,15 +23,15 @@ pre: " <b> 3. </b> "
 ---
 
 ### [Event 3](3.3-Event3/)
-&emsp;**Event Name:** Secure Hybrid Access to S3 using VPC Endpoints
-&emsp;**Date & Time:** 9:00a.m 4th April
-&emsp;**Location:** Academy Hall FPT university
+&emsp;**Event Name:** Secure Hybrid Access to S3 using VPC Endpoints<br>
+&emsp;**Date & Time:** 9:00 a.m 4th April<br>
+&emsp;**Location:** Academy Hall FPT University<br>
 &emsp;**Role:** Attendee
 
 ---
 
 ### [Event 4](3.4-Event4/)
-&emsp;**Event Name:** AWS Networking, Security & IAM Workshop
-&emsp;**Date & Time:** 9:00a.m th April
-&emsp;**Location:** Academy Hall FPT university
+&emsp;**Event Name:** AWS Networking, Security & IAM Workshop<br>
+&emsp;**Date & Time:** 9:00a.m th April<br>
+&emsp;**Location:** Academy Hall FPT university<br>
 &emsp;**Role:** Attendee
