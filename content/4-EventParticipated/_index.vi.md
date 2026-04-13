@@ -19,3 +19,19 @@ pre: " <b> 3. </b> "
 &emsp;**Thời gian:** March 14, 2026  
 &emsp;**Địa điểm:** AWS Vietnam Office (Tầng 26), Thành phố Hồ Chí Minh  
 &emsp;**Vai trò:** Người tham dự (FCJ Cloud Intern)
+
+---
+
+### [Sự kiện 3](3.3-Event3/)
+&emsp;**Tên sự kiện:** Secure Hybrid Access to S3 using VPC Endpoints    
+&emsp;**Thời gian:** 9:00 a.m, ngày 04 tháng 04  
+&emsp;**Địa điểm:** Hội trường Academy, Đại học FPT  
+&emsp;**Vai trò:** Người tham dự  
+
+---
+
+### [Sự kiện 4](3.4-Event4/)
+&emsp;**Tên sự kiện:** Workshop AWS Networking, Security & IAM  
+&emsp;**Thời gian:** 9:00 a.m, ngày 08 tháng 04  
+&emsp;**Địa điểm:** Hội trường Academy, Đại học FPT  
+&emsp;**Vai trò:** Người tham dự  
